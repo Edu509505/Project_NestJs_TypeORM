@@ -12,10 +12,11 @@ export class UsersService {
   ) {}
 
   async findAllUsers(): Promise<Users[]> {
-    if (Users.length === 0)
+    if (Users.length === null || undefined) {
       throw new HttpException('Users not found!', HttpStatus.NOT_FOUND);
+    }
 
-    return this.usersRepository.find();
+    return await this.usersRepository.find();
   }
 
   async createUsers(user: UserDomain): Promise<UserDomain> {
