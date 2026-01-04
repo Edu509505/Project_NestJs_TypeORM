@@ -13,6 +13,7 @@ export class UsersController {
 
   @Post()
   async createUsers(@Body() userDTO: UsersDTOS) {
+    console.log('DTO recebido:', userDTO);
     return await this.usersService.createUsers(userDTO);
   }
 }
