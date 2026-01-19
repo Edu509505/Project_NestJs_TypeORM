@@ -30,4 +30,12 @@ export class UsersService {
 
     return await this.usersRepository.save(updateUser);
   }
+
+  async deleteUser(id: string): Promise<any>{
+    const deleteUser = await this.usersRepository.delete(id);
+
+    if(!deleteUser) throw new Error ("Usuário Não Deletado");
+
+    return deleteUser
+  }
 }
